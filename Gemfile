@@ -38,6 +38,15 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  
+  gem "better_errors"
+  gem "binding_of_caller"
+   gem 'rack-mini-profiler'
+   gem 'pry'
+   gem 'pry-rails'
+  #RailsPanel chrome extension.
+  gem 'meta_request'
+
 end
 
 group :development do
