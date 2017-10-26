@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  affilation: MyString
+  city: MyString
+  country: MyString
+  start_date: 2017-10-26
+  contact: MyString
+  address: MyString
+  doctor: one
+
+two:
+  affilation: MyString
+  city: MyString
+  country: MyString
+  start_date: 2017-10-26
+  contact: MyString
+  address: MyString
+  doctor: two

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wait_time_rating: 1.5
+  bedside_manner_rating: 1.5
+  overall_rating: 1.5
+  review: MyText
+  is_recommended: false
+
+two:
+  wait_time_rating: 1.5
+  bedside_manner_rating: 1.5
+  overall_rating: 1.5
+  review: MyText
+  is_recommended: false

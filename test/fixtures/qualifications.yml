@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  qualification_name: MyText
+  institute_name: MyString
+  procurement_year: 2017-10-26
+  doctor: one
+
+two:
+  qualification_name: MyText
+  institute_name: MyString
+  procurement_year: 2017-10-26
+  doctor: two

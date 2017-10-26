@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Wait time rating:</strong>
+  <%= @review.wait_time_rating %>
+</p>
+
+<p>
+  <strong>Bedside manner rating:</strong>
+  <%= @review.bedside_manner_rating %>
+</p>
+
+<p>
+  <strong>Overall rating:</strong>
+  <%= @review.overall_rating %>
+</p>
+
+<p>
+  <strong>Review:</strong>
+  <%= @review.review %>
+</p>
+
+<p>
+  <strong>Is recommended:</strong>
+  <%= @review.is_recommended %>
+</p>
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>
