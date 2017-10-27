@@ -49,10 +49,7 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.3)
     byebug (9.1.0)
-<<<<<<< HEAD
     callsite (0.0.11)
-=======
->>>>>>> 8f22b675994ef6602fd67c77ee1e397d5b3c02fb
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -208,11 +205,8 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
-<<<<<<< HEAD
   meta_request
   pry
-=======
->>>>>>> 8f22b675994ef6602fd67c77ee1e397d5b3c02fb
   pry-rails
   puma (~> 3.0)
   rack-mini-profiler
