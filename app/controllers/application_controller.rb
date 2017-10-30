@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+	 # before_filter :check_role, only: [:create]
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
  # protected
@@ -20,5 +21,15 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
+
+
+
+def check_role
+  # if params[:user][:user_type] == 'doctor'
+  #   redirect_to new_doctor_path
+  # # elsif [:user][:user_type] == 'patient'
+  # #   redirect_to user_path
+  # end
+end
  
 end
