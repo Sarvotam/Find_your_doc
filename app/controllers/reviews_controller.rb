@@ -5,6 +5,14 @@ class ReviewsController < ApplicationController
   # GET /reviews.json
   def index
     @reviews = Review.all
+    if current_user
+    @user = User.find(current_user)
+    
+       if @user.user_type == "doctor" && @user.sign_in_count == 1
+          redirect_to new_doctor_path
+       end
+    end
+   
   end
 
   # GET /reviews/1
