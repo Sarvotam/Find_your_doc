@@ -12,7 +12,15 @@
     <%= f.label :contact_number %><%= f.text_field :contact_number %><br>
     <%= f.label :address %> <%= f.text_field :address %><br>
     <%= f.label :date_of_birth %><%= f.date_field :date_of_birth %><br>
-    <%= f.label :gender %><%= f.text_field :gender %>
+   <%= f.label :gender %>
+    
+<%= f.radio_button :gender, "male" %> Male
+<%= f.radio_button :gender, "female" %> Female
+<%= f.radio_button :gender, "others" %> Others
+
+    
+
+
   </div>
 
   <div class="field">
