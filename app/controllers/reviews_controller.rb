@@ -1,18 +1,18 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /reviews
   # GET /reviews.json
   def index
     @reviews = Review.all
-    if current_user
-    @user = User.find(current_user)
     # Enable dr to signup their verification form (redirect_to new_doctor_path) and stop to enter in if full form is not filled by Dr account user.
-       if @user.user_type == "doctor" && @user.sign_in_count == 1 && @user.doctor.nil?
-          redirect_to new_doctor_path
-       end
-    end
-   
+       if current_user.user_type == "doctor"
+          if current_user.doctor.nil?
+            redirect_to new_doctor_path
+          else
+            redirect_to root_path
+          end
+       end   
   end
 
   # GET /reviews/1
