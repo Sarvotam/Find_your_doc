@@ -1,0 +1,22 @@
+<%= form_for(time_schedule) do |f| %>
+  <% if time_schedule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(time_schedule.errors.count, "error") %> prohibited this time_schedule from being saved:</h2>
+
+      <ul>
+      <% time_schedule.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+  <%= f.label :slot_time %>
+          <%= f.text_area :slot_time, autofocus: true %>
+          <%= f.label :slot_date %><%= f.date_field :slot_date %>
+          <%= f.label :day_of_week %><%= f.text_field :day_of_week %><br>
+          <%= f.label :h %><%= f.text_field :institute_name %><br>
+    <%= f.submit %>
+  </div>
+<% end %>

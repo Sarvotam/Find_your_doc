@@ -1,6 +1,6 @@
 class DoctorsController < ApplicationController
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
-
+   before_action :validate_user, except: [:index]
   # GET /doctors
   # GET /doctors.json
   def index
@@ -25,7 +25,7 @@ class DoctorsController < ApplicationController
   # POST /doctors.json
   def create
     @doctor = Doctor.new(doctor_params)
-    # @doctor.user_id= 4
+    @doctor.user_id= current_user.id
 
     respond_to do |format|
       if @doctor.save

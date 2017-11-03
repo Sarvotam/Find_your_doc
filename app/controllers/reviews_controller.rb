@@ -7,8 +7,8 @@ class ReviewsController < ApplicationController
     @reviews = Review.all
     if current_user
     @user = User.find(current_user)
-    
-       if @user.user_type == "doctor" && @user.sign_in_count == 1
+    # Enable dr to signup their verification form (redirect_to new_doctor_path) and stop to enter in if full form is not filled by Dr account user.
+       if @user.user_type == "doctor" && @user.sign_in_count == 1 && @user.doctor.nil?
           redirect_to new_doctor_path
        end
     end

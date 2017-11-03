@@ -1,0 +1,23 @@
+<%= form_for(qualification) do |f| %>
+  <% if qualification.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(qualification.errors.count, "error") %> prohibited this qualification from being saved:</h2>
+
+      <ul>
+      <% qualification.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+          <%= f.label :qualification_name %>
+          <%= f.text_area :qualification_name, autofocus: true %>
+          <%= f.label :procurement_year %><%= f.date_field :procurement_year %>
+          <%= f.label :language %><%= f.text_field :language %><br>
+          <%= f.label :institute_name %><%= f.text_field :institute_name %><br>
+          <%= f.label :board_certification %><%= f.text_field :board_certification %><br>
+    <%= f.submit %>
+  </div>
+<% end %>
