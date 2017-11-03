@@ -1,6 +1,8 @@
 class DoctorsController < ApplicationController
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
-   before_action :validate_user, except: [:index]
+   before_action :authenticate_user!
+   before_action :check, only: [:index]
+   before_action :doctor_authentication, except: [:index]
   # GET /doctors
   # GET /doctors.json
   def index
@@ -63,6 +65,28 @@ class DoctorsController < ApplicationController
   end
 
   private
+
+    def doctor_authentication
+      if current_user.user_type == "patient"
+        redirect_to root_path
+      else
+        if !current_user.doctor.nil?
+          if current_user.doctor.profile_confirmation == false
+            flash[:notice] = "wait wait"
+            redirect_to doctors_path
+          end
+      end
+    end
+    end
+
+    def check
+      if !current_user.doctor.nil?
+        if current_user.doctor.profile_confirmation === false
+          return true
+        end
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_doctor
       @doctor = Doctor.find(params[:id])
