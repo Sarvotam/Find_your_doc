@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Hospital Affiliations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hospital_affiliations.each do |hospital_affiliation| %>
+      <tr>
+        <td><%= link_to 'Show', hospital_affiliation %></td>
+        <td><%= link_to 'Edit', edit_hospital_affiliation_path(hospital_affiliation) %></td>
+        <td><%= link_to 'Destroy', hospital_affiliation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hospital Affiliation', new_hospital_affiliation_path %>

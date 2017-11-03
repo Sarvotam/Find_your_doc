@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Qualifications</h1>
+
+<table>
+  <thead>
+    <tr>
+    <th>Qualification</th>
+    <th>Procurement Year</th>
+    <th>Language Used</th>
+    <th>Institute Name</th>
+    <th>Board Certificates</th>
+      <th colspan="3"> Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @qualifications.each do |qualification| %>
+      <tr>
+      <td><%= qualification.qualification_name %>  </td>
+      <td><%= qualification.procurement_year %>  </td>
+      <td><%= qualification.language %>  </td>
+      <td><%= qualification.institute_name %>  </td>
+      <td><%= qualification.board_certification %>  </td>
+        <td><%= link_to 'Show', qualification %></td>
+        <td><%= link_to 'Edit', edit_qualification_path(qualification) %></td>
+        <td><%= link_to 'Destroy', qualification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Qualification', new_qualification_path %>
+

@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 	 # before_filter :check_role, only: [:create]
+   include ApplicationHelper
+ 
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   
@@ -22,7 +24,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
-<<<<<<< HEAD
+
 
 
 
@@ -33,9 +35,8 @@ def check_role
   # #   redirect_to user_path
   # end
 end
-=======
+
   
  
->>>>>>> 866ee8d8379c7a06ace0f9afbdfd435d8e5e4bf3
  
 end
