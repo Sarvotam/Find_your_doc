@@ -1,6 +1,6 @@
 class HospitalAffiliationsController < ApplicationController
   before_action :set_hospital_affiliation, only: [:show, :edit, :update, :destroy]
-  before_action :validate_user, except: [:index]
+   before_action :doctor_authentication, except: [:index]
 
   # GET /hospital_affiliations
   # GET /hospital_affiliations.json
