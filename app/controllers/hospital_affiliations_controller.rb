@@ -1,6 +1,7 @@
 class HospitalAffiliationsController < ApplicationController
   before_action :set_hospital_affiliation, only: [:show, :edit, :update, :destroy]
    before_action :doctor_authentication, except: [:index]
+   before_action :fast
 
   # GET /hospital_affiliations
   # GET /hospital_affiliations.json
@@ -72,5 +73,11 @@ class HospitalAffiliationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def hospital_affiliation_params
             params.require(:hospital_affiliation).permit(:affiliation, :city, :country, :start_date, :contact, :address )
+    end
+
+    def fast
+      if current_user.doctor.nil?
+          redirect_to new_doctor_path
+      end
     end
 end

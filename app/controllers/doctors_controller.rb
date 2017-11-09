@@ -73,10 +73,8 @@ class DoctorsController < ApplicationController
     end
 
     def try
-      if !current_user.doctor.nil?
-        redirect_to root_path
-      # elsif !current_user.doctor.nil? && current_user.doctor.profile_confirmation == true
-      #     redirect_to doctors_path
+      if !current_user.doctor.nil? && current_user.doctor.profile_confirmation == true
+          redirect_to doctors_path
       end
     end
 
