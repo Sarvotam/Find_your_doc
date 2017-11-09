@@ -2,7 +2,7 @@ class DoctorsController < ApplicationController
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
    before_action :authenticate_user!
       before_action :check, only: [:show, :edit, :update, :destroy] 
-      before_action :try, except: [:index]
+      # before_action :try, except: [:index]
       before_action :user_type_valid, except: [:index]
    # before_action :doctor_authentication, except: [:index]
   # GET /doctors
@@ -68,18 +68,20 @@ class DoctorsController < ApplicationController
 
   private
     def check
-      if current_user.doctor.nil?
+      if current_user.user_type == "doctor" && current_user.doctor.nil?
           redirect_to new_doctor_path
+        elsif !current_user.doctor.nil?
+            redirect_to root_path
       end
     end
 
-    def try
-      if !current_user.doctor.nil?
-        redirect_to root_path
-      # elsif !current_user.doctor.nil? && current_user.doctor.profile_confirmation == true
-      #     redirect_to doctors_path
-      end
-    end
+    # def try
+    #   if !current_user.doctor.nil?
+    #     redirect_to root_path
+    #   # elsif !current_user.doctor.nil? && current_user.doctor.profile_confirmation == true
+    #   #     redirect_to doctors_path
+    #   end
+    # end
 
     def user_type_valid
       if current_user.user_type == "patient"
