@@ -1,6 +1,7 @@
 class DoctorsController < ApplicationController
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
    before_action :authenticate_user!
+   before_action :doctor_authentication
       before_action :check, only: [:show, :edit, :update, :destroy] 
       before_action :try, except: [:index]
    # before_action :doctor_authentication, except: [:index]
@@ -79,7 +80,11 @@ class DoctorsController < ApplicationController
     end
 
 
-  
+   def doctor_authentication
+      if current_user.doctor.profile_confirmation == false
+        redirect_to root_path
+      end
+    end
     
 
 

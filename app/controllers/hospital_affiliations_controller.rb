@@ -80,4 +80,10 @@ class HospitalAffiliationsController < ApplicationController
           redirect_to new_doctor_path
       end
     end
+
+    def doctor_authentication
+      if current_user.doctor.profile_confirmation == false
+        redirect_to root_path
+      end
+    end
 end
