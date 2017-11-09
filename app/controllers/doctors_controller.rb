@@ -1,11 +1,10 @@
 class DoctorsController < ApplicationController
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
-   before_action :authenticate_user!
-   before_action :doctor_authentication, only: [:show, :edit, :update, :destroy]
-      before_action :check, only: [:show, :edit, :update, :destroy] 
-      before_action :try, except: [:index]
-      before_action :check
-   # before_action :doctor_authentication, except: [:index]
+  before_action :authenticate_user!
+  before_action :doctor_authentication, only: [:show, :edit, :update, :destroy]
+  before_action :check, only: [:show, :edit, :update, :destroy] 
+  before_action :try, except: [:index]
+  before_action :user_type, except: [:index]
   # GET /doctors
   # GET /doctors.json
   def index
@@ -87,7 +86,7 @@ class DoctorsController < ApplicationController
       end
     end
 
-      def check
+      def user_type
       if current_user.user_type == "patient" 
           redirect_to root_path
       end
