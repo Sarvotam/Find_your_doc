@@ -3,7 +3,7 @@ Rails.application.routes.draw do
    resources :doctors
   resources :reviews
   devise_for :users
-         root to: "profiles#index"
+         root to: "reviews#index"
    resources :qualifications
    resources :hospital_affiliations
    resources :profiles

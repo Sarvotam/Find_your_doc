@@ -1,8 +1,10 @@
 class QualificationsController < ApplicationController
   before_action :set_qualification, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :profile_authentication, only: [:show, :edit, :update, :destroy]
-    before_action :fast
+    before_action :doctor_authentication
+
+  # before_action :doctor_authentication
+    
 
 
   # GET /qualifications
@@ -78,22 +80,4 @@ class QualificationsController < ApplicationController
     end
 
     # doctor verification to uplode the profile (qualification)
-     def profile_authentication
-      if current_user.user_type == "patient"
-        redirect_to root_path
-      else
-        if current_user.doctor.nil?
-        
-            redirect_to new_doctor_path
-  
-      end
-    end
-    end
-
-
-      def fast
-      if current_user.doctor.nil?
-          redirect_to new_doctor_path
-      end
-    end
 end

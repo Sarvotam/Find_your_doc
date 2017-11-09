@@ -4,21 +4,7 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
-    # Enable dr to signup their verification form (redirect_to new_doctor_path) and stop to enter in if full form is not filled by Dr account user.  
-<<<<<<< HEAD
-       if current_user.user_type == "doctor" && current_user.doctor.nil?
-          redirect_to new_doctor_path
-       elsif current_user.user_type == "patient"
-          redirect_to root_path
-        else
-          redirect_to root_path
-       end
-=======
-       # if current_user.user_type == "doctor" && current_user.doctor.nil?
-       #    redirect_to new_doctor_path
-       # end
->>>>>>> 5a2f86d8dc7f712aab47b9017b46864df89009b9
+    @reviews = Review.all   
   end
   
 
