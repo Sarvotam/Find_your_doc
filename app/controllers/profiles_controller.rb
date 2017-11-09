@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   # before_action :authenticate_user!
   def index
-    @profiles = current_user.qualifications.all  
+    @profiles = User.all  
   end
 end

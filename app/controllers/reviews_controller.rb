@@ -8,8 +8,10 @@ class ReviewsController < ApplicationController
     # Enable dr to signup their verification form (redirect_to new_doctor_path) and stop to enter in if full form is not filled by Dr account user.  
        if current_user.user_type == "doctor" && current_user.doctor.nil?
           redirect_to new_doctor_path
-       else
-          redirect_to doctors_path
+       elsif current_user.user_type == "patient"
+          redirect_to root_path
+        else
+          redirect_to root_path
        end
   end
   
