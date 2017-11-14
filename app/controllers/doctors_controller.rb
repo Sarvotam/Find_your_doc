@@ -1,8 +1,13 @@
 class DoctorsController < ApplicationController
+  include DoctorsHelper
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :doctor, :only [:new, :create]
   before_action :doctor_authentication, except: [:new, :create]
+<<<<<<< HEAD
+=======
+  before_action :doctor, only: [:new, :create]
+>>>>>>> f6499b1c0ac532ebd1ffca304c60b98895423f1c
   # GET /doctors
   # GET /doctors.json
   def index
@@ -65,7 +70,10 @@ class DoctorsController < ApplicationController
   end
 
   private  
+<<<<<<< HEAD
     
+=======
+>>>>>>> f6499b1c0ac532ebd1ffca304c60b98895423f1c
 
     # Use callbacks to share common setup or constraints between actions.
     def set_doctor

@@ -2,7 +2,9 @@ class QualificationsController < ApplicationController
   before_action :set_qualification, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :doctor_authentication
-  before_action :user_type_validate
+
+ 
+
 
   # before_action :doctor_authentication
 
