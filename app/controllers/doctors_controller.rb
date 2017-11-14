@@ -67,17 +67,7 @@ class DoctorsController < ApplicationController
   end
 
   private  
-    def doctor
-        if  current_user.user_type == "doctor" 
-           if !current_user.doctor.nil? 
-              flash[:notice] = "you r doctors"
-              redirect_to root_path
-           end
-         else
-          flash[:notice] = "you r patient"
-          redirect_to root_path
-        end
-    end  
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_doctor
       @doctor = Doctor.find(params[:id])
