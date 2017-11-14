@@ -14,17 +14,5 @@ module ApplicationHelper
               redirect_to root_path
           end
       end
- def user_type_validate
-        if  current_user.user_type == "doctor" 
-           if !current_user.doctor.nil? 
-              flash[:notice] = "you doctors"
-              redirect_to root_path
-           end
-         else
-          flash[:notice] = "you r patient"
-          redirect_to root_path
-        end
-    end 
-      
-end
+    end
 end
