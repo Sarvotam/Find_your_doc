@@ -3,7 +3,7 @@ class DoctorsController < ApplicationController
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :doctor, only: [:new, :create]
-  before_action :doctor_authentication, except: [:new, :create]
+  before_action :doctor_authentication, except: [:new, :create,:show]
 
   # GET /doctors
   # GET /doctors.json
@@ -14,6 +14,7 @@ class DoctorsController < ApplicationController
   # GET /doctors/1
   # GET /doctors/1.json
   def show
+    @review = Review.new
   end
 
   # GET /doctors/new

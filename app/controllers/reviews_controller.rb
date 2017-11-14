@@ -5,9 +5,6 @@ class ReviewsController < ApplicationController
   # GET /reviews.json
   def index
     @reviews = Review.all   
-    def yoyo
-    @current_user ||= User.find_by(id: session[:user_id])
-  end
   end
   
 
@@ -31,7 +28,7 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
-
+    @review.user_id = current_user.id
     respond_to do |format|
       if @review.save
         format.html { redirect_to @review, notice: 'Review was successfully created.' }
@@ -75,6 +72,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:wait_time_rating, :bedside_manner_rating, :overall_rating, :review, :is_recommended)
+      params.require(:review).permit(:wait_time_rating, :bedside_manner_rating, :overall_rating, :review, :is_recommended, :doctor_id)
     end
 end
