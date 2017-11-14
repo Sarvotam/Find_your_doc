@@ -9,9 +9,12 @@ module ApplicationHelper
                     flash[:notice] = "doctor pending"
                     redirect_to root_path
                 end
-            end
+            else
+              flash[:notice] = "fill the form"
+              redirect_to root_path
           end
       end
 
       
+end
 end

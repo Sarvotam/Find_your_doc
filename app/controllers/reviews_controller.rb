@@ -5,8 +5,12 @@ class ReviewsController < ApplicationController
   # GET /reviews.json
   def index
     @reviews = Review.all   
+    def yoyo
+    @current_user ||= User.find_by(id: session[:user_id])
+  end
   end
   
+
 
 
   # GET /reviews/1

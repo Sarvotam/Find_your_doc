@@ -70,7 +70,7 @@ class DoctorsController < ApplicationController
     def doctor
         if  current_user.user_type == "doctor" 
            if !current_user.doctor.nil? 
-              flash[:notice] = "you doctors"
+              flash[:notice] = "you r doctors"
               redirect_to root_path
            end
          else
