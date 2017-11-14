@@ -2,7 +2,7 @@ class DoctorsController < ApplicationController
   include DoctorsHelper
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :doctor, :only [:new, :create]
+  before_action :doctor, only: [:new, :create]
   before_action :doctor_authentication, except: [:new, :create]
 
   # GET /doctors

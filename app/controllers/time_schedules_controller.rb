@@ -1,5 +1,6 @@
 class TimeSchedulesController < ApplicationController
   before_action :set_time_schedule, only: [:show, :edit, :update, :destroy]
+  before_action :doctor_authentication, except: [:index]
 
   # GET /time_schedules
   # GET /time_schedules.json
