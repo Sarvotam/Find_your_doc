@@ -3,9 +3,10 @@ class QualificationsController < ApplicationController
   before_action :authenticate_user!
   before_action :doctor_authentication
 
-  # before_action :doctor_authentication
-    
+ 
 
+
+  # before_action :doctor_authentication
 
   # GET /qualifications
   # GET /qualifications.json
