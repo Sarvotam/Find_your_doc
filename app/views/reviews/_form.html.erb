@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+<div class="field">
+    
+    <%= f.hidden_field :doctor_id,:value => params[:id]%>
+  </div>
   <div class="field">
     <%= f.label :wait_time_rating %>
     <%= f.text_field :wait_time_rating %>

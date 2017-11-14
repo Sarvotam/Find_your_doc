@@ -1,7 +1,7 @@
 class HospitalAffiliationsController < ApplicationController
   before_action :set_hospital_affiliation, only: [:show, :edit, :update, :destroy]
    before_action :doctor_authentication, except: [:index]
-   before_action :fast
+ 
 
   # GET /hospital_affiliations
   # GET /hospital_affiliations.json
@@ -75,15 +75,4 @@ class HospitalAffiliationsController < ApplicationController
             params.require(:hospital_affiliation).permit(:affiliation, :city, :country, :start_date, :contact, :address )
     end
 
-    def fast
-      if current_user.doctor.nil?
-          redirect_to new_doctor_path
-      end
-    end
-
-    def doctor_authentication
-      if current_user.doctor.profile_confirmation == false
-        redirect_to root_path
-      end
-    end
 end
