@@ -14,7 +14,7 @@
       <tr>
       <td><%= doctor.professional_statement %>  </td>
       <td><%= doctor.practicing_from %></td>
-      <td><%= doctor.profile_image %></td>
+      <td><%= image_tag doctor.profile_image.url(:thumb) %></td>
       <td><%= doctor.certificate_image %></td>
       <td><%= doctor.fax_number %></td>
         <td><%= link_to 'Show', doctor %></td>

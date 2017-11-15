@@ -74,13 +74,4 @@ class HospitalAffiliationsController < ApplicationController
             params.require(:hospital_affiliation).permit(:affiliation, :city, :country, :start_date, :contact, :address )
     end
 
-<<<<<<< HEAD
-
-    # def doctor_authentication
-    #   if current_user.doctor.profile_confirmation == false
-    #     redirect_to root_path
-    #   end
-    # end
-=======
->>>>>>> 8f0a6429b622324afcff303c0ca798d731e1e5a2
 end
