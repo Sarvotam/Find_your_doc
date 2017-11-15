@@ -1,4 +1,4 @@
-<%= form_for(doctor) do |f| %>
+<%= form_for doctor, html: { multipart: true } do |f| %>
   <% if doctor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(doctor.errors.count, "error") %> prohibited this doctor from being saved:</h2>
@@ -14,7 +14,7 @@
           <%= f.label :professional_statement %>
           <%= f.text_area :professional_statement, autofocus: true %>
           <%= f.label :practicing_from %><%= f.date_field :practicing_from %>
-          <%= f.label :profile_image %><%= f.text_field :profile_image %><br>
+          <%= f.label :profile_image %><%= f.file_field :profile_image %><br>
           <%= f.label :certificate_image %><%= f.text_field :certificate_image %><br>
           <%= f.label :fax_number %><%= f.text_field :fax_number %><br>
   <div class="actions">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106083352) do
+ActiveRecord::Schema.define(version: 20171115090647) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "start_time"
@@ -42,9 +42,13 @@ ActiveRecord::Schema.define(version: 20171106083352) do
     t.integer  "fax_number"
     t.boolean  "award"
     t.integer  "user_id"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.boolean  "profile_confirmation",   default: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.boolean  "profile_confirmation",       default: false
+    t.string   "profile_image_file_name"
+    t.string   "profile_image_content_type"
+    t.integer  "profile_image_file_size"
+    t.datetime "profile_image_updated_at"
     t.index ["user_id"], name: "index_doctors_on_user_id"
     t.index [nil], name: "index_doctors_on_user"
   end
