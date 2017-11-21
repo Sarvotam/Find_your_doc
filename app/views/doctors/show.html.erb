@@ -1,9 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
 <p id="notice"><%= notice %></p>
+<div id="doctor-show " >
+	<div class="header">
+		<div class="container">
+			<div class="row">
+				<div class="profile">
+				<div class="col-md-3"></div>
+				<div class="profile-image col-md-3">
+				 	<tbody>
+				      <tr>
+				      <td><%= image_tag @doctor.profile_image.url(:medium), class: "img-circle", width: "140px", height: "140px" %></td>
+					      <div class="doctor-interface">
+						        <td><%= link_to 'Edit', edit_doctor_path(@doctor) %></td>
+						        <td><%= link_to 'Destroy', @doctor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					      </div>
+				      </tr>
+				 	 </tbody>
+				 </div>
+
+			 	 </div>
+			 	 <div id="doctor-name " class="col-md-6">
+		 			<h2 style="font-weight: bolder;"><%= "Dr." + @doctor.user.first_name + " " + @doctor.user.Last_name%></h2>
+		 			<h5>Dentist</h5> 
+		 			<button class="btn">BOOK Appointment</button>
+		 		</div>
+			</div>
+		 </div>
+	</div>
+<div class="Q-statement background-style ">
+<div class="container">
+		<div class="qualification-header">Qualifications and Experience</div>
+		<div class="qualifications">
+			<div class="row">
+			<div class="col-md-1"></div>
+				<div class="col-md-2">
+					Education
+				</div>
+				<div class="col-md-6">
+					     <%= @qualification.qualification_name %>
+				</div>
+			<div class="col-md-3"></div>
+			</div>
+			<hr>
+			<div class="row">
+			<div class="col-md-1"></div>
+				<div class="col-md-2">
+					Board Certificates
+				</div>
+				<div class="col-md-6">
+									 <%= @qualification.board_certification %> 
+				</div>
+			<div class="col-md-3"></div>
+			</div>
+			<hr>
+			<div class="row">
+			<div class="col-md-1"></div>
+				<div class="col-md-2">
+					Specialities
+				</div>
+				<div class="col-md-6">
+				 */*/*/***************
+				</div>
+			<div class="col-md-3"></div>
+			</div>
+			<hr>
+			<div class="row">
+			<div class="col-md-1"></div>
+				<div class="col-md-2">
+					Language
+				</div>
+				<div class="col-md-6">
+				 <%= @qualification.language %> 
+				</div>
+			<div class="col-md-3"></div>	
+			</div>
+			<hr>
+			<div class="row">
+			<div class="col-md-1"></div>
+				<div class="col-md-2">
+					Institude Name
+				</div>
+				<div class="col-md-6">
+					<%= @qualification.institute_name %> 
+				</div>
+			<div class="col-md-3"></div>	
+			</div>
+			<hr>
+			<div class="row">
+			<div class="col-md-1"></div>
+				<div class="col-md-2">
+					procurement year
+				</div>
+				<div class="col-md-6">
+				<%= @qualification.procurement_year %>
+				</div>
+			<div class="col-md-3"></div>
+			</div>
+			<hr>
+			<div class="row">
+			<div class="col-md-1"></div>
+				<div class="col-md-2">
+					Contact
+				</div>
+				<div class="col-md-6">
+				<%= @doctor.fax_number %>
+				</div>
+			<div class="col-md-3"></div>
+			</div>
+			<hr>
+			<div class="row">
+			<div class="col-md-1"></div>
+				<div class="col-md-2">
+					Proffessional statement
+				</div>
+				<div class="col-md-6">
+				<%= @doctor.professional_statement%>
+				</div>
+			<div class="col-md-3"></div>
+			</div>
+		<!-- 	<div class="row">
+				<div class="col-md-3">
+					Qualifications
+				</div>
+				<div class="col-md-9">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+				</div>
+			</div> -->
+			     <%= link_to 'Show', @qualification %>
+					       <%= link_to 'Edit', edit_qualification_path(@qualification) %>
+					       <%= link_to 'Destroy', @qualification, method: :delete, data: { confirm: 'Are you sure?' } %>
+		</div>
+	</div>
+</div>
 
 
-<center><h1><%= @doctor.user.first_name + " " + @doctor.user.Last_name%> </h1></center>
 
-<%=render "reviews/form", review: @review %>
 
-<%= link_to 'Edit', edit_doctor_path(@doctor) %> |
-<%= link_to 'Back', doctors_path %>
+	<!-- review given by the users -->
+	<h1>Reviews</h1>
+<div id="review">
+	<div class="user-rating">
+		<div class="container">
+			<% @reviews.each do |review| %>
+				<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-md-2">
+						Date of comment<br>
+						by Sarvottam Hengaju<br>
+						(verified patient)
+					</div>
+					<div class="col-md-2">
+						Overall Rating<br>
+						Bedside Manner Rating<br>
+						Wait Time Rating
+					</div>
+					<div class="col-md-2">
+						<%= review.wait_time_rating %><br>
+						<%= review.bedside_manner_rating %><br>
+						<%= review.overall_rating %>
+					</div>
+					<div class="col-md-5">
+						<%= review.review %>
+					</div>
+				</div>
+				<td><%= link_to 'Show', review %></td>
+		        <td><%= link_to 'Edit', edit_review_path(review) %></td>
+		        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			<% end %>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+

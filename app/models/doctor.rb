@@ -4,7 +4,7 @@ class Doctor < ApplicationRecord
 	has_many :reviews
 	has_many :time_schedules, dependent: :destroy
 	has_many :hospital_affiliations, dependent: :destroy
-	has_many :qualifications, dependent: :destroy
+	has_one :qualification, dependent: :destroy
 	has_many :doctor_specializations, dependent: :destroy
 	has_many :offices, dependent: :destroy
 	has_attached_file :profile_image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
