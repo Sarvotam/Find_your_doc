@@ -28,10 +28,44 @@
 		 			<h2 style="font-weight: bolder;"><%= "Dr." + @doctor.user.first_name + " " + @doctor.user.Last_name%></h2>
 		 			<h5>Dentist</h5> 
 		 			<button class="btn">BOOK Appointment</button>
+
+		 			 <% if user_signed_in? && current_user.user_type == "patient" %>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Review your doctor</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Verified patient rating</h4>
+        </div>
+        <div class="modal-body">
+            <div id="review">
+                <div class="container">
+                    <div class="row">
+                        <div class="client-review">
+                        <%=render "reviews/form", review: @review %>
+                        <%= link_to 'Edit', edit_doctor_path(@doctor) %> |
+                        <%= link_to 'Back', doctors_path %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      
+    </div>  
+</div>
+<% end %>
 		 		</div>
 			</div>
 		 </div>
 	</div>
+</div>
 <div class="Q-statement background-style ">
 <div class="container">
 		<div class="qualification-header">Qualifications and Experience</div>
