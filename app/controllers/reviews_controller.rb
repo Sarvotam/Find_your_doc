@@ -18,6 +18,10 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
+
+    if @review.save
+      redirect_to root_path
+    end
   end
 
   # GET /reviews/1/edit

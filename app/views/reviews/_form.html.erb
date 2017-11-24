@@ -15,19 +15,16 @@
     
     <%= f.hidden_field :doctor_id,:value => params[:id]%>
   </div>
-  <div class="field">
-    <%= f.label :wait_time_rating %>
-    <%= f.text_field :wait_time_rating %>
+  <div id="rating-form1">
+    <label>Wait time rating</label>
   </div>
 
-  <div class="field">
-    <%= f.label :bedside_manner_rating %>
-    <%= f.text_field :bedside_manner_rating %>
+  <div id="rating-form2">
+    <label>bedside manner rating</label>
   </div>
 
-  <div class="field">
-    <%= f.label :overall_rating %>
-    <%= f.text_field :overall_rating %>
+  <div id="rating-form3">
+    <label>overall rating</label>
   </div>
 
   <div class="field">
@@ -44,3 +41,21 @@
     <%= f.submit %>
   </div>
 <% end %>
+ <script type="text/javascript">
+          $('#rating-form1',).raty({
+            path: '/assets/',
+            scoreName: 'review[wait_time_rating]'
+          });
+        </script>
+         <script type="text/javascript">
+          $('#rating-form2').raty({
+            path: '/assets/',
+            scoreName: 'review[bedside_manner_rating]'
+          });
+        </script>
+ <script type="text/javascript">
+          $('#rating-form3').raty({
+            path: '/assets/',
+            scoreName: 'review[overall_rating]'
+          });
+        </script>
