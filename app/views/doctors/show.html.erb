@@ -21,6 +21,7 @@
 					      </div>
 				      </tr>
 				 	 </tbody>
+				 	 <div class="average-review-rating" data-score=<%= @average_review %>></div>
 				 </div>
 
 			 	 </div>
@@ -56,6 +57,7 @@
                 </div>
             </div>
         </div>
+      
       </div>
       
     </div>  
@@ -80,7 +82,7 @@
 				</div>
 			<div class="col-md-3"></div>
 			</div>
-			<hr>
+			<hr class="qualifaction-divider">
 			<div class="row">
 			<div class="col-md-1"></div>
 				<div class="col-md-2">
@@ -91,7 +93,7 @@
 				</div>
 			<div class="col-md-3"></div>
 			</div>
-			<hr>
+			<hr class="qualifaction-divider">
 			<div class="row">
 			<div class="col-md-1"></div>
 				<div class="col-md-2">
@@ -102,7 +104,7 @@
 				</div>
 			<div class="col-md-3"></div>
 			</div>
-			<hr>
+			<hr class="qualifaction-divider">
 			<div class="row">
 			<div class="col-md-1"></div>
 				<div class="col-md-2">
@@ -113,7 +115,7 @@
 				</div>
 			<div class="col-md-3"></div>	
 			</div>
-			<hr>
+			<hr class="qualifaction-divider">
 			<div class="row">
 			<div class="col-md-1"></div>
 				<div class="col-md-2">
@@ -124,7 +126,7 @@
 				</div>
 			<div class="col-md-3"></div>	
 			</div>
-			<hr>
+			<hr class="qualifaction-divider">
 			<div class="row">
 			<div class="col-md-1"></div>
 				<div class="col-md-2">
@@ -135,7 +137,7 @@
 				</div>
 			<div class="col-md-3"></div>
 			</div>
-			<hr>
+			<hr class="qualifaction-divider">
 			<div class="row">
 			<div class="col-md-1"></div>
 				<div class="col-md-2">
@@ -146,7 +148,7 @@
 				</div>
 			<div class="col-md-3"></div>
 			</div>
-			<hr>
+			<hr class="qualifaction-divider">
 			<div class="row">
 			<div class="col-md-1"></div>
 				<div class="col-md-2">
@@ -157,16 +159,6 @@
 				</div>
 			<div class="col-md-3"></div>
 			</div>
-		<!-- 	<div class="row">
-				<div class="col-md-3">
-					Qualifications
-				</div>
-				<div class="col-md-9">
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-				</div>
-			</div> -->
 			     <%= link_to 'Show', @qualification %>
 					       <%= link_to 'Edit', edit_qualification_path(@qualification) %>
 					       <%= link_to 'Destroy', @qualification, method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -196,11 +188,12 @@
 						Wait Time Rating
 					</div>
 					<div class="col-md-2">
-						<%= review.wait_time_rating %><br>
-						<%= review.bedside_manner_rating %><br>
-						<%= review.overall_rating %>
+						<div class="review-rating" data-score="<%= review.wait_time_rating %>"></div>
+						<div class="review-rating" data-score="<%= review.bedside_manner_rating %>"></div>
+						<div class="review-rating" data-score="<%= review.overall_rating %>"></div>
 					</div>
 					<div class="col-md-5">
+						<label>Review:</label>
 						<%= review.review %>
 					</div>
 				</div>
@@ -211,6 +204,25 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	$('.review-rating').raty({ 
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
+	});
+</script>
 </body>
 </html>
 
+
+<script>
+	$('.average-review-rating').raty({
+		readOnly: true,
+		path: '/assets/',
+		score: function() {
+			return $(this).attr('data-score')
+		}
+	});
+</script>
