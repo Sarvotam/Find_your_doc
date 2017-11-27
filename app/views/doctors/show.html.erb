@@ -29,20 +29,9 @@
 		 			<h2 style="font-weight: bolder;"><%= "Dr." + @doctor.user.first_name + " " + @doctor.user.Last_name%></h2>
 		 			<h5>Dentist</h5> 
 		 			<button class="btn">BOOK Appointment</button>
-<% @r = Review.all %>
-<% if @r.nil? %>
-	Nill xa hait
-	<%else%>
-	skjdfbkdjf
-	<% @r.inspect%>
- <% end  %>
 
 	<% if current_user.user_type == "patient" %>
-	 <% if (Review.where("doctor_id = ? AND user_id = ?", params[:id], current_user.id)) %>
-	 
-	 	<%= params[:id] %>
-	 	<%= current_user.id %>
-	 
+	 <% if (Review.where("doctor_id = ? AND user_id = ?", params[:id], current_user.id)).empty? %>	 
   <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Review your doctor</button>
   <!-- Modal -->
