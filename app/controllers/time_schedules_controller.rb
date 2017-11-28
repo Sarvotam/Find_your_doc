@@ -16,6 +16,8 @@ class TimeSchedulesController < ApplicationController
   # GET /time_schedules/new
   def new
     @time_schedule = TimeSchedule.new
+    @hospital_affiliation = HospitalAffiliation.all
+    @hospital_affiliation = HospitalAffiliation.new
   end
 
   # GET /time_schedules/1/edit
@@ -26,7 +28,7 @@ class TimeSchedulesController < ApplicationController
   # POST /time_schedules.json
   def create
     @time_schedule = TimeSchedule.new(time_schedule_params)
-
+    @time_schedule = current_user.doctor
     respond_to do |format|
       if @time_schedule.save
         format.html { redirect_to @time_schedule, notice: 'Time schedule was successfully created.' }
@@ -70,6 +72,6 @@ class TimeSchedulesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def time_schedule_params
-      params.fetch(:time_schedule, {})
+      params.require(:time_schedule).permit(:start_time, :slot_date, :end_time, :hospital_affiliation_id, :doctor_id)
     end
 end

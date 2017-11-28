@@ -1,5 +1,17 @@
 <h1>New Time Schedule</h1>
+<div id="time-schedule">
+  <div class="add-time">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <%= render 'form', time_schedule: @time_schedule %><br>
+        </div>
+        <div class="col-md-6">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= render 'form', time_schedule: @time_schedule %>
 
-<%= link_to 'Back', time_schedules_path %>
+
