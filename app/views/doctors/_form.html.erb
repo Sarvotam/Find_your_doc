@@ -11,13 +11,46 @@
       </ul>
     </div>
   <% end %>
-          <%= f.label :professional_statement %>
-          <%= f.text_area :professional_statement, autofocus: true %>
-          <%= f.label :practicing_from %><%= f.date_field :practicing_from %>
-          <%= f.label :profile_image %><%= f.file_field :profile_image %><br>
-          <%= f.label :certificate_image %><%= f.text_field :certificate_image %><br>
-          <%= f.label :fax_number %><%= f.text_field :fax_number %><br>
-  <div class="actions">
-    <%= f.submit %>
+          
+<div id="doctor_testomonial">
+  <div class="wrapper">
+    <div class="holder">
+      <div class="container">
+        <div class="row text-center">
+            <div class="actions">
+               <div class="margin"><%= f.label :professional_statement, :class =>'label0' %><br><%= f.text_area :professional_statement, autofocus: true, :class => 'statement_pannel' %>
+                </div>
+                <div class="practicing_from margin"><%= f.label :practicing_from , :class => 'label1'%><br><%= f.date_field :practicing_from, :class => 'date_pannel' %></div>
+                <div class="profile_image margin" ><center><%= f.label :profile_image, :class => 'label2' %><%= f.file_field :profile_image, :class => 'image_pannel' %>
+                <%= f.label :certificate_image, :class => 'label3' %><%= f.text_field :certificate_image %></center></div>
+              
+                <div class="fax_number margin"><%= f.label :fax_number, :class => 'label4' %><br><%= f.text_field :fax_number, :class => 'fax_pannel' %></div>
+          </div>
+
+            <%= f.submit :class => 'submit_btn' %>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+
+  
 <% end %>
+<style type="text/css">
+  #doctor_testomonial { background:url('/assets/element.jpg'); background-size:cover; position: relative; z-index: 1;  }
+  #doctor_testomonial:before{ content:""; position:absolute; left:0; top:0; width:100%; height:100%; z-index: -1; background: rgba(51, 51, 51, 0.7); }
+  .wrapper { display: table; width: 100%; height: 100vh; margin: 0px; }
+  .holder { display: table-cell; vertical-align: middle; padding: 15px 0px; }
+  .margin {margin-bottom: 20px; font-size: 20px; color: #ffffff; line-height: 40px;}
+  .statement_pannel {    height: 100px; width: 425px;border-radius: 5px;}
+  .actions {color: #ffffff;}
+  .date_pannel {    height: 38px; width: 425px;  border-radius: 5px; color: #000000;}
+  .iamge_pannel{  }
+  .fax_pannel { height: 38px; width: 425px;border-radius: 5px;}
+  .label0 {    margin-right: 202px; margin-bottom: 0px;}
+  .label1{     margin-right: 276px; margin-bottom: 0px;  }
+  .label2{  }
+  .label3{  }
+  .label4{ margin-right: 310px; margin-bottom: 0px;  }
+  .submit_btn {  height: 35px;border-radius: 5px;width: 425px; padding: 0 10px; border: none; background: #ffffff;box-shadow: 1px 1px 5px 0 #0003DD; }
+</style>

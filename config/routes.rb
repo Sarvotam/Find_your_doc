@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+root to: "reviews#index"
      
   get 'static_pages/home'
 
@@ -14,8 +16,10 @@ Rails.application.routes.draw do
 
    resources :doctors
   resources :reviews
-  devise_for :users
-         root to: "reviews#index"
+  devise_for :users, controllers: {
+    registrations:'users/registrations',
+    sessions: 'users/sessions'
+  }
    resources :qualifications
    resources :hospital_affiliations
    resources :profiles

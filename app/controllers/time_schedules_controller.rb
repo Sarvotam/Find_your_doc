@@ -1,6 +1,6 @@
 class TimeSchedulesController < ApplicationController
   before_action :set_time_schedule, only: [:show, :edit, :update, :destroy]
-  before_action :doctor_authentication, except: [:index]
+  before_action :doctor_authentication
 
   # GET /time_schedules
   # GET /time_schedules.json
@@ -28,13 +28,14 @@ class TimeSchedulesController < ApplicationController
   # POST /time_schedules.json
   def create
     @time_schedule = TimeSchedule.new(time_schedule_params)
-    @time_schedule = current_user.doctor
+    @time_schedule.doctor_id = current_user.doctor.id
     respond_to do |format|
       if @time_schedule.save
         format.html { redirect_to @time_schedule, notice: 'Time schedule was successfully created.' }
         format.json { render :show, status: :created, location: @time_schedule }
       else
-        format.html { render :new }
+         @hospital_affiliation = HospitalAffiliation.new
+        format.html { render :new , hospital_affiliation: @hospital_affiliation}
         format.json { render json: @time_schedule.errors, status: :unprocessable_entity }
       end
     end

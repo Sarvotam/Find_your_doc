@@ -25,6 +25,7 @@ class HospitalAffiliationsController < ApplicationController
   # POST /hospital_affiliations
   # POST /hospital_affiliations.json
   def create
+  
     @hospital_affiliation = HospitalAffiliation.new(hospital_affiliation_params)
     @hospital_affiliation.doctor_id = current_user.doctor.id
 

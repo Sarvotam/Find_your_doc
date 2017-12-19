@@ -6,9 +6,6 @@ class ReviewsController < ApplicationController
   def index
     @reviews = Review.all   
   end
-  
-
-
 
   # GET /reviews/1
   # GET /reviews/1.json

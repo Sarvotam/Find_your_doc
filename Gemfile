@@ -36,8 +36,10 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 # gem 'capistrano-rails', group: :development
 gem 'paperclip', '~> 5.1'
 group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-nav'
+  gem 'pry-stack_explorer'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
 
   
 
