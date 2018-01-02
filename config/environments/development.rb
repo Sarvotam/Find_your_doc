@@ -13,6 +13,9 @@ Rails.application.configure do
 
   # Show full error reports.
   config.consider_all_requests_local = true
+      # config.active_record.time_zone_aware_types = [:datetime]
+config.active_record.time_zone_aware_types = [:datetime, :time]
+
 
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?

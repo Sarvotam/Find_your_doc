@@ -8,7 +8,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   # def create
-  #   super
+  #   super    
   # end
 
   # DELETE /resource/sign_out
@@ -16,7 +16,20 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def after_sign_in_path_for(resource)
+    if current_user.user_type == "doctor"
+      id = current_user.doctor.id
+      if current_user.doctor.profile_confirmation == false
+        '/doctors/new'
+      else
+        '/doctors/#{id}'
+      end
+    elsif current_user.user_type == "patient"
+      '/doctors'
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

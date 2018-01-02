@@ -1,3 +1,4 @@
+
 <%= form_for(time_schedule) do |f| %>
   <% if time_schedule.errors.any? %>
     <div id="error_explanation">
@@ -11,11 +12,44 @@
     </div>
   <% end %>
 
-  <div class="actions">
-  <%= f.label :slot_time %>
-          <%= f.time_select :slot_time, autofocus: true %>
-          <%= f.label :slot_date %><%= f.date_field :slot_date %>
-          <%= f.label :day_of_week %><%= f.text_field :day_of_week %><br>
-    <%= f.submit %>
+  <div id="time_schedule">
+    <div class="wrapper">
+      <div class="holder">
+            <div class="container">
+              <div class="row">
+                <div class="text-center">
+                    <div class="actions" style="margin: 0px;">
+                      <div class="time">
+                         <%= f.label :start_time, :class => 'start_time' %><%= f.text_field :start_time, autofocus: true, :class => 'text_field' %><!-- start time field -->
+                         <%= f.label :end_time, :class => 'start_time' %><%= f.text_field :end_time, :class => 'text_field' %><br><!-- end time field -->
+                      </div>
+                      <div class="slot_date-wrap">
+                          <%= f.label :slot_date, :class => 'slot_date' %><%= f.date_field :slot_date, :class => 'date_field' %><br><!-- slot date field -->
+                      </div>
+                        <%= f.collection_select :hospital_affiliation_id, HospitalAffiliation.all, :id, :affiliation, {:prompt => "your affiliation"}, :class => 'option_btn' %><!-- option buttion -->
+                      <%= f.submit :class => 'submit_btn' %><!-- submit button -->
+                    </div>
+                    <button>Hospital affiliation</button>
+                </div>
+              </div>
+    </div>
+      </div>
+    </div>
   </div>
 <% end %>
+<style type="text/css">
+  #time_schedule { background:url('/assets/time-bg.jpg'); background-size:cover; position: relative; z-index: 1; }
+  #time_schedule:before{content:""; position:absolute; left:0; top:0; width:100%; height:100%; z-index: -1; background: rgba(255, 0, 10, 0.2);}
+  .wrapper { display: table; width: 100%; height: 100vh; margin: 0px; }
+  .holder { display: table-cell; vertical-align: middle; padding: 15px 0px; }
+  button {  height: 35px;border-radius: 5px;width: 180px; padding: 0 10px; border: none; background: #ffffff;box-shadow: 1px 1px 5px 0 #0003DD;}
+  .option_btn { border: none; height: 35px;border-radius: 5px;width: 180px; padding: 0 10px; margin-right: 15px; margin-bottom: 20px; background: #ffffff; box-shadow: 1px 1px 5px 0 #0003DD; }
+  .submit_btn {  height: 35px; border: none; border-radius: 5px;width: 180px; padding: 0 10px; margin-bottom: 20px; background: #ffffff;     box-shadow: 1px 1px 5px 0 #0003DD; }
+  .text_field { color: #000000; width: 90px; height: 35px; border: none; -webkit-box-shadow: inset -1px -1px 23px -1px rgba(0,0,0,1);
+-moz-box-shadow: inset -1px -1px 23px -1px rgba(0,0,0,1);
+box-shadow: inset -1px -1px 23px -1px rgba(0,0,0,1);}
+  .date_field { color: #000000; width: 296px; height: 35px; font-size: 20px; }
+  .start_time { padding-right: 15px; padding-left: 20px; }
+  .slot_date{  padding-right: 22px;  }
+  .time, .slot_date-wrap{ font-size: 30px; color: #ffffff; line-height: 40px; margin-bottom: 20px; }
+</style>

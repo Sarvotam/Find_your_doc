@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171115090647) do
+ActiveRecord::Schema.define(version: 20171128091237) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "start_time"
@@ -22,7 +22,9 @@ ActiveRecord::Schema.define(version: 20171115090647) do
     t.integer  "user_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "time_schedule_id"
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
+    t.index ["time_schedule_id"], name: "index_appointments_on_time_schedule_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
@@ -117,13 +119,14 @@ ActiveRecord::Schema.define(version: 20171115090647) do
   end
 
   create_table "time_schedules", force: :cascade do |t|
-    t.time     "slot_time"
+    t.time     "start_time"
     t.date     "slot_date"
     t.string   "day_of_week"
     t.integer  "hospital_affiliation_id"
     t.integer  "doctor_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.time     "end_time"
     t.index ["doctor_id"], name: "index_time_schedules_on_doctor_id"
     t.index ["hospital_affiliation_id"], name: "index_time_schedules_on_hospital_affiliation_id"
   end

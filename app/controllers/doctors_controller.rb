@@ -1,19 +1,20 @@
 class DoctorsController < ApplicationController
-  include DoctorsHelper
+  # include DoctorsHelper
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :doctor, only: [:new, :create]
-  before_action :doctor_authentication, except: [:new, :create,:show]
+  # before_action :doctor, only: [:new, :create]
+  before_action :doctor_authentication, except: [:show, :index]
 
   # GET /doctors
   # GET /doctors.json
   def index
-    @doctors = Doctor.all
+    @doctors = Doctor.where(profile_confirmation: true) #views of the doc profile only if confirmed
   end
 
   # GET /doctors/1
   # GET /doctors/1.json
   def show
+
     @review = Review.new
      @reviews = @doctor.reviews
     @qualification = @doctor.qualification  
@@ -38,18 +39,18 @@ class DoctorsController < ApplicationController
   # POST /doctors
   # POST /doctors.json
   def create
-    @doctor = Doctor.new(doctor_params)
-    @doctor.user_id= current_user.id
-
-    respond_to do |format|
-      if @doctor.save
-        format.html { redirect_to @doctor, notice: 'Doctor was successfully created.' }
-        format.json { render :show, status: :created, location: @doctor }
-      else
-        format.html { render :new }
-        format.json { render json: @doctor.errors, status: :unprocessable_entity }
-      end
-    end
+    # binding.pry
+    @doctor = current_user.doctor.update_attributes(professional_statement: params[:doctor][:professional_statement], practicing_from: params[:doctor][:practicing_from], profile_image: params[:doctor][:profile_image], certificate_image: params[:doctor][:certificate_image], fax_number: params[:doctor][:fax_number])
+    redirect_to doctors_path
+    # respond_to do |format|
+    #   if @doctor.save
+    #     format.html { redirect_to @doctor, notice: 'Doctor was successfully created.' }
+    #     format.json { render :show, status: :created, location: @doctor }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @doctor.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /doctors/1
