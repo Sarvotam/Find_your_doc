@@ -5,15 +5,15 @@ module ApplicationHelper
           redirect_to root_path
           flash[:notice] = "you r not a doctor"
         else
-            if !current_user.doctor.nil? 
                 if current_user.doctor.profile_confirmation == false
-                    flash[:notice] = "doctor pending"
-                    redirect_to root_path
-                end
-            else
-              flash[:notice] = "fill the form"
-              redirect_to root_path
+                    flash[:notice] = "your account is pending for dr. profile request"
+                    '/doctor/new'
+               
+            # else
+            #   flash[:notice] = "fill the form again .. something is missing"
+            #   '/doctor/new'
           end
       end
+
     end
 end
