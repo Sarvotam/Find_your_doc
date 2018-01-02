@@ -1,6 +1,6 @@
 module DoctorsHelper
    def doctor
-    binding.pry
+    # binding.pry
         if  current_user.user_type == "doctor" 
            if !current_user.doctor.nil? 
               flash[:notice] = "you r doctors"

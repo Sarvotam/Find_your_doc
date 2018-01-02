@@ -29,18 +29,11 @@
 		 			<h2 style="font-weight: bolder;"><%= "Dr." + @doctor.user.first_name + " " + @doctor.user.Last_name%></h2>
 		 			<h5>Dentist</h5> 
 		 			<button class="btn">BOOK Appointment</button>
-<<<<<<< HEAD
 
-
-	<% if current_user.user_type == "patient" %>
-	 <% if (Review.where("doctor_id = ? AND user_id = ?", params[:id], current_user.id)).empty? %>
-	 
-	 
-=======
 
 	<% if current_user.user_type == "patient" %>
 	 <% if (Review.where("doctor_id = ? AND user_id = ?", params[:id], current_user.id)).empty? %>	 
->>>>>>> 1082bc555d178396a6cf99008960f5775d42cd87
+
   <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Review your doctor</button>
   <!-- Modal -->
@@ -78,6 +71,7 @@
 		 </div>
 	</div>
 </div>
+
 <div class="Q-statement background-style ">
 <div class="container">
 		<div class="qualification-header">Qualifications and Experience</div>
@@ -176,6 +170,7 @@
 		</div>
 	</div>
 </div>
+
 
 
 

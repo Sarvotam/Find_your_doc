@@ -17,8 +17,9 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   protected
-
+# binding.pry
   def after_sign_in_path_for(resource)
+    # binding.pry
     if current_user.user_type == "doctor"
       id = current_user.doctor.id
       if current_user.doctor.profile_confirmation == false
