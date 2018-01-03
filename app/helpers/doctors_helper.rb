@@ -2,10 +2,7 @@ module DoctorsHelper
    def doctor
     # binding.pry
         if  current_user.user_type == "doctor" 
-           if !current_user.doctor.nil? 
-              flash[:notice] = "you r doctors"
-              redirect_to root_path
-           end
+              'doctor/new'
          else
           flash[:notice] = "you r patient"
           redirect_to root_path

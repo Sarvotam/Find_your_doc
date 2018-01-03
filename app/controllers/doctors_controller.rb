@@ -1,5 +1,5 @@
 class DoctorsController < ApplicationController
-  # include DoctorsHelper
+  include DoctorsHelper
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :doctor, only: [:new, :create]
@@ -16,15 +16,13 @@ class DoctorsController < ApplicationController
   def show
 
     @review = Review.new
-     @reviews = @doctor.reviews
+    @reviews = @doctor.reviews
     @qualification = @doctor.qualification  
-    
         if @doctor.reviews.blank?
               @average_review = 0
               else
                 @average_review = (@doctor.reviews.average(:wait_time_rating) + @doctor.reviews.average(:bedside_manner_rating) + @doctor.reviews.average(:overall_rating))/3           
-            end
-          
+        end   
   end
 
   # GET /doctors/new
