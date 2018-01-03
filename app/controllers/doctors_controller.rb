@@ -1,9 +1,11 @@
 class DoctorsController < ApplicationController
-  # include DoctorsHelper
+  include DoctorsHelper
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :doctor, only: [:new, :create]
   before_action :doctor_authentication, except: [:show, :index]
+    before_action :specific_user, only: [ :edit, :update, :destroy ]
+
 
   # GET /doctors
   # GET /doctors.json
@@ -80,6 +82,13 @@ class DoctorsController < ApplicationController
 
   private  
 
+
+   def specific_user
+     if session[:doctor_id] != @doctor.id
+      flash[:notice] = "You are not the right user"
+      redirect_to doctor_path(session[:doctor_id]) 
+    end
+  end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_doctor

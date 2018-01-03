@@ -1,6 +1,8 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+    before_action :specific_user, only: [:show, :edit, :update, :destroy ]
+
   # GET /reviews
   # GET /reviews.json
   def index
@@ -66,6 +68,14 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+
+   def specific_user
+     if current_user.id != @review.user_id
+      flash[:notice] = "You are not the right user"
+      redirect_to root_path
+    end
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_review
       @review = Review.find(params[:id])

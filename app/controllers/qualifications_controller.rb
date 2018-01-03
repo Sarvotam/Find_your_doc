@@ -1,11 +1,10 @@
 class QualificationsController < ApplicationController
-  before_action :set_qualification, only: [:show, :edit, :update, :destroy]
+  before_action :set_qualification, only: [ :specific_user, :show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :doctor_authentication
+  before_action :specific_user, only: [:show, :edit, :update, :destroy ]
 
  
-
-
   # before_action :doctor_authentication
 
   # GET /qualifications
@@ -70,6 +69,15 @@ class QualificationsController < ApplicationController
   end
 
   private
+
+
+   def specific_user
+     if session[:doctor_id] != @qualification.doctor_id
+      flash[:notice] = "You are not the right user"
+      redirect_to doctor_path(session[:doctor_id]) 
+    end
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_qualification
       @qualification = Qualification.find(params[:id])
