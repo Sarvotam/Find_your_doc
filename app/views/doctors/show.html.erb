@@ -17,7 +17,7 @@
 				      <td><%= image_tag @doctor.profile_image.url(:medium), class: "img-circle", width: "140px", height: "140px" %></td>
 					      <div class="doctor-interface">
 						        <td><%= link_to 'Edit', edit_doctor_path(@doctor) %></td>
-						        <td><%= link_to 'Destroy', @doctor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+						        </td>
 					      </div>
 				      </tr>
 				 	 </tbody>
@@ -30,8 +30,10 @@
 		 			<h5>Dentist</h5> 
 		 			<button class="btn">BOOK Appointment</button>
 
+
 	<% if current_user.user_type == "patient" %>
 	 <% if (Review.where("doctor_id = ? AND user_id = ?", params[:id], current_user.id)).empty? %>	 
+
   <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Review your doctor</button>
   <!-- Modal -->
@@ -69,6 +71,112 @@
 		 </div>
 	</div>
 </div>
+<<<<<<< HEAD
+=======
+
+
+
+<div class="Q-statement background-style ">
+<div class="container">
+		<div class="qualification-header">Qualifications and Experience</div>
+		<div class="qualifications">
+			<div class="row">
+			<div class="col-md-1"></div>
+				<div class="col-md-2">
+					Education
+				</div>
+				<div class="col-md-6">
+					     <%= @qualification.qualification_name %>
+				</div>
+			<div class="col-md-3"></div>
+			</div>
+
+		
+
+			<div class="row">
+			<div class="col-md-1"></div>
+				<div class="col-md-2">
+					Board Certificates
+				</div>
+									 <%= @qualification.board_certification %> 
+				</div>
+			<div class="col-md-3"></div>
+			</div>
+			<hr class="qualifaction-divider">
+			<div class="row">
+			<div class="col-md-1"></div>
+				<div class="col-md-2">
+					Specialities
+				</div>
+				<div class="col-md-6">
+				 */*/*/***************
+				</div>
+			<div class="col-md-3"></div>
+			</div>
+			<hr class="qualifaction-divider">
+			<div class="row">
+			<div class="col-md-1"></div>
+				<div class="col-md-2">
+					Language
+				</div>
+				<div class="col-md-6">
+				 <%= @qualification.language %> 
+				</div>
+			<div class="col-md-3"></div>	
+			</div>
+			<hr class="qualifaction-divider">
+			<div class="row">
+			<div class="col-md-1"></div>
+				<div class="col-md-2">
+					Institude Name
+				</div>
+				<div class="col-md-6">
+					<%= @qualification.institute_name %> 
+				</div>
+			<div class="col-md-3"></div>	
+			</div>
+			<hr class="qualifaction-divider">
+			<div class="row">
+			<div class="col-md-1"></div>
+				<div class="col-md-2">
+					procurement year
+				</div>
+				<div class="col-md-6">
+				<%= @qualification.procurement_year %>
+				</div>
+			<div class="col-md-3"></div>
+			</div>
+			<hr class="qualifaction-divider">
+			<div class="row">
+			<div class="col-md-1"></div>
+				<div class="col-md-2">
+					Contact
+				</div>
+				<div class="col-md-6">
+				<%= @doctor.fax_number %>
+				</div>
+			<div class="col-md-3"></div>
+			</div>
+			<hr class="qualifaction-divider">
+			<div class="row">
+			<div class="col-md-1"></div>
+				<div class="col-md-2">
+					Proffessional statement
+				</div>
+				<div class="col-md-6">
+				<%= @doctor.professional_statement%>
+				</div>
+			<div class="col-md-3"></div>
+			</div>
+			     <%= link_to 'Show', @qualification %>
+					       <%= link_to 'Edit', edit_qualification_path(@qualification) %>
+					       <%= link_to 'Destroy', @qualification, method: :delete, data: { confirm: 'Are you sure?' } %>
+		</div>
+	</div>
+</div>
+
+
+>>>>>>> cd1abada565d02d59f14ca8fa27d0dc018b086eb
 
 <div class="Q-statement background-style ">	
 <% if @doctor.qualification.nil? %>

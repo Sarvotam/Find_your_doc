@@ -51,11 +51,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
   def after_sign_up_path_for(resource)
     # binding.pry
+
         if resource.user_type == "doctor"
            doctor = Doctor.create(user_id: current_user.id)
     doctor.save!
       # redirect_to new_doctor_path and return
       # id = doctor.id
+
       "/doctors/new"
     elsif resource.user_type == "patient"
       "/doctors"
