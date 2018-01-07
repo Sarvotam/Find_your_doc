@@ -18,5 +18,23 @@
     <%= yield %>
      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>  
 
+<script type="text/javascript">
+  $('.review-rating').raty({ 
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+
+  $('.average-review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+  </script>
+
   </body>
 </html>

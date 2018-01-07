@@ -37,16 +37,15 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'paperclip', '~> 5.1'
 group :development, :test do
   gem 'pry-rails'
+  gem 'byebug'
   gem 'pry-nav'
   gem 'pry-stack_explorer'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'rack-mini-profiler'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 
-  
-
-  gem "binding_of_caller"
-   # gem 'rack-mini-profiler'
-
-   gem 'pry-rails'
   #RailsPanel chrome extension.
   gem 'meta_request'
 end

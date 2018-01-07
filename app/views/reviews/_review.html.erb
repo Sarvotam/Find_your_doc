@@ -1,0 +1,26 @@
+<div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            Date of comment<br>
+            by Sarvottam Hengaju<br>
+            (verified patient)
+          </div>
+          <div class="col-md-2">
+            Overall Rating<br>
+            Bedside Manner Rating<br>
+            Wait Time Rating
+          </div>
+          <div class="col-md-2">
+            <div class="review-rating" data-score="<%= review.wait_time_rating %>"></div>
+            <div class="review-rating" data-score="<%= review.bedside_manner_rating %>"></div>
+            <div class="review-rating" data-score="<%= review.overall_rating %>"></div>
+          </div>
+          <div class="col-md-5">
+            <label>Review:</label>
+            <%= review.review %>
+          </div>
+           <%= link_to 'Show', review %>
+            <%= link_to 'Edit', edit_review_path(review) %>
+<%= link_to 'Destroy', review,remote: true, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+       

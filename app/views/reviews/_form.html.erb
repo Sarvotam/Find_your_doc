@@ -1,19 +1,8 @@
-<%= form_for(review) do |f| %>
-  <% if review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
-
-      <ul>
-      <% review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for(review, remote: true )do |f| %>
 
 <div class="field">
     
-    <%= f.hidden_field :doctor_id,:value => params[:id]%>
+    <%= f.hidden_field :doctor_id, :value => params[:id]%>
   </div>
   <div id="rating-form1">
     <label>Wait time rating</label>
@@ -59,3 +48,20 @@
             scoreName: 'review[overall_rating]'
           });
         </script>
+        <script type="text/javascript">
+  $('.review-rating').raty({ 
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+
+  $('.average-review-rating').raty({
+    readOnly: true,
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score')
+    }
+  });
+  </script>

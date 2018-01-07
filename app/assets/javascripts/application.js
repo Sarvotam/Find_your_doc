@@ -42,4 +42,7 @@ $('.contact-form').find('.form-control').blur(function() {
       'fontSize': '18px'
     }, 300);
   }
-})
+});
+
+
+

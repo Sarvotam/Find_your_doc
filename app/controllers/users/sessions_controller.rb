@@ -20,14 +20,15 @@ class Users::SessionsController < Devise::SessionsController
 # binding.pry
   def after_sign_in_path_for(resource)
     # binding.pry
-    if current_user.user_type == "doctor"
+    session[:user_type] = current_user.user_type
+    if session[:user_type] == "doctor"
       session[:doctor_id] = current_user.doctor.id
       if current_user.doctor.profile_confirmation == false
         '/doctors/new'
       else
        doctor_path(session[:doctor_id]) # '/doctors/#{id}'
       end
-    elsif current_user.user_type == "patient"
+    elsif session[:user_type] == "patient"
       '/doctors'
     end
   end

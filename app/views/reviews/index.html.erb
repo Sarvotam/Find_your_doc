@@ -2,7 +2,7 @@
 
 <h1>Reviews</h1>
 
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>Wait time rating</th>
@@ -14,21 +14,18 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @reviews.each do |review| %>
-      <tr>
-        <td><%= review.wait_time_rating %></td>
-        <td><%= review.bedside_manner_rating %></td>
-        <td><%= review.overall_rating %></td>
-        <td><%= review.review %></td>
-        <td><%= review.is_recommended %></td>
-        <td><%= link_to 'Show', review %></td>
-        <td><%= link_to 'Edit', edit_review_path(review) %></td>
-        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <tbody> -->
+    <div id="review">
+  <div class="user-rating">
+    <div class="container">
+      <%=  render @reviews %>
+    </div>
+  </div>
+</div>
+    
+      
+ <!--  </tbody>
+</table> -->
 
 <br>
 
