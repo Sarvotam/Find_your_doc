@@ -71,118 +71,13 @@
 		 </div>
 	</div>
 </div>
-<<<<<<< HEAD
-=======
 
-
-
-<div class="Q-statement background-style ">
-<div class="container">
-		<div class="qualification-header">Qualifications and Experience</div>
-		<div class="qualifications">
-			<div class="row">
-			<div class="col-md-1"></div>
-				<div class="col-md-2">
-					Education
-				</div>
-				<div class="col-md-6">
-					     <%= @qualification.qualification_name %>
-				</div>
-			<div class="col-md-3"></div>
-			</div>
-
-		
-
-			<div class="row">
-			<div class="col-md-1"></div>
-				<div class="col-md-2">
-					Board Certificates
-				</div>
-									 <%= @qualification.board_certification %> 
-				</div>
-			<div class="col-md-3"></div>
-			</div>
-			<hr class="qualifaction-divider">
-			<div class="row">
-			<div class="col-md-1"></div>
-				<div class="col-md-2">
-					Specialities
-				</div>
-				<div class="col-md-6">
-				 */*/*/***************
-				</div>
-			<div class="col-md-3"></div>
-			</div>
-			<hr class="qualifaction-divider">
-			<div class="row">
-			<div class="col-md-1"></div>
-				<div class="col-md-2">
-					Language
-				</div>
-				<div class="col-md-6">
-				 <%= @qualification.language %> 
-				</div>
-			<div class="col-md-3"></div>	
-			</div>
-			<hr class="qualifaction-divider">
-			<div class="row">
-			<div class="col-md-1"></div>
-				<div class="col-md-2">
-					Institude Name
-				</div>
-				<div class="col-md-6">
-					<%= @qualification.institute_name %> 
-				</div>
-			<div class="col-md-3"></div>	
-			</div>
-			<hr class="qualifaction-divider">
-			<div class="row">
-			<div class="col-md-1"></div>
-				<div class="col-md-2">
-					procurement year
-				</div>
-				<div class="col-md-6">
-				<%= @qualification.procurement_year %>
-				</div>
-			<div class="col-md-3"></div>
-			</div>
-			<hr class="qualifaction-divider">
-			<div class="row">
-			<div class="col-md-1"></div>
-				<div class="col-md-2">
-					Contact
-				</div>
-				<div class="col-md-6">
-				<%= @doctor.fax_number %>
-				</div>
-			<div class="col-md-3"></div>
-			</div>
-			<hr class="qualifaction-divider">
-			<div class="row">
-			<div class="col-md-1"></div>
-				<div class="col-md-2">
-					Proffessional statement
-				</div>
-				<div class="col-md-6">
-				<%= @doctor.professional_statement%>
-				</div>
-			<div class="col-md-3"></div>
-			</div>
-			     <%= link_to 'Show', @qualification %>
-					       <%= link_to 'Edit', edit_qualification_path(@qualification) %>
-					       <%= link_to 'Destroy', @qualification, method: :delete, data: { confirm: 'Are you sure?' } %>
-		</div>
-	</div>
-</div>
-
-
->>>>>>> cd1abada565d02d59f14ca8fa27d0dc018b086eb
 
 <div class="Q-statement background-style ">	
 <% if @doctor.qualification.nil? %>
 	<h1>the qualification is nill</h1>	
 	<% if current_user.user_type == "doctor" %>
-	<%= link_to 'redirect to qulaification form', new_qualification_path %>
+	<%= link_to 'redirect to qualaification form', new_qualification_path %>
 	<% end %>
  <%else %>
 
