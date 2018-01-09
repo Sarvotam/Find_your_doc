@@ -2,17 +2,21 @@
 
 <div class="field">
     
-    <%= f.hidden_field :doctor_id, :value => params[:id]%>
+    <%= f.hidden_field :doctor_id%>
   </div>
-  <div id="rating-form1">
+
+  
+  <div id="rating-form1" class="review-rating">
     <label>Wait time rating</label>
   </div>
 
-  <div id="rating-form2">
+
+ 
+  <div id="rating-form2" class="review-rating">
     <label>bedside manner rating</label>
   </div>
 
-  <div id="rating-form3">
+  <div id="rating-form3" class="review-rating">
     <label>overall rating</label>
   </div>
 
@@ -48,20 +52,4 @@
             scoreName: 'review[overall_rating]'
           });
         </script>
-        <script type="text/javascript">
-  $('.review-rating').raty({ 
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/'
-  });
-
-  $('.average-review-rating').raty({
-    readOnly: true,
-    path: '/assets/',
-    score: function() {
-      return $(this).attr('data-score')
-    }
-  });
-  </script>
+       
