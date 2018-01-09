@@ -1,0 +1,11 @@
+$('#review-modal').modal('hide');
+$( ".doctor_review" ).append( "<%=j render @review %>");
+
+
+   $('.review-rating').raty({ 
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });

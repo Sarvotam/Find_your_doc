@@ -32,39 +32,14 @@
 
 
 	<% if current_user.user_type == "patient" %>
-	 <% if (Review.where("doctor_id = ? AND user_id = ?", params[:id], current_user.id)).empty? %>	 
+	 <% #if (Review.where("doctor_id = ? AND user_id = ?", params[:id], current_user.id)).empty? %>	 
 
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Review your doctor</button>
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Verified patient rating</h4>
-        </div>
-        <div class="modal-body">
-            <div id="review">
-                <div class="container">
-                    <div class="row">
-                        <div class="client-review">
-                        <%=render "reviews/form", review: @review %>
-                        <%= link_to 'Edit', edit_doctor_path(@doctor) %> |
-                        <%= link_to 'Back', doctors_path %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-      
-      </div>
-      
-    </div>  
-</div>
-<%end %>
+ 
+  <%= link_to "Add Review", new_review_path(doctor_id: @doctor.id),
+				remote: true, class: 'btn sign-up' %>
+
+
+<%#end %>
 <% end %>
 		 		</div>
 			</div>
@@ -73,11 +48,15 @@
 </div>
 
 
+
+
+
+
 <div class="Q-statement background-style ">	
 <% if @doctor.qualification.nil? %>
 	<h1>the qualification is nill</h1>	
 	<% if current_user.user_type == "doctor" %>
-	<%= link_to 'redirect to qualaification form', new_qualification_path %>
+	<%= link_to 'redirect to qualification form', new_qualification_path %>
 	<% end %>
  <%else %>
 
@@ -172,8 +151,8 @@
 			<div class="col-md-3"></div>
 			</div>
 			     <%= link_to 'Show', @qualification %>
-					       <%= link_to 'Edit', edit_qualification_path(@qualification) %>
-					       <%= link_to 'Destroy', @qualification, method: :delete, data: { confirm: 'Are you sure?' } %>
+				 <%= link_to 'Edit', edit_qualification_path(@qualification) %>
+				 <%= link_to 'Destroy', @qualification, method: :delete, data: { confirm: 'Are you sure?' } %>
 		</div>
 	</div>
 </div>
@@ -185,9 +164,9 @@
 	<h1>Reviews</h1>
 <div id="review">
 	<div class="user-rating">
-		<div class="container">
+		<div class="container doctor_review">
 			<% @reviews.each do |review| %>
-				<div class="row">
+				<div class="row" id="review-<%= review.id%>">
 					<div class="col-md-1"></div>
 					<div class="col-md-2">
 						Date of comment<br>
@@ -208,33 +187,20 @@
 						<label>Review:</label>
 						<%= review.review %>
 					</div>
+
+					<%= link_to 'Show', review %>
+		        <%= link_to 'Edit', edit_review_path(review), remote: true  %>
+		        <%= link_to 'Destroy', review, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %>
 				</div>
-				<td><%= link_to 'Show', review %></td>
-		        <td><%= link_to 'Edit', edit_review_path(review) %></td>
-		        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				<hr>
 			<% end %>
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-	$('.review-rating').raty({ 
-		readOnly: true,
-		score: function() {
-			return $(this).attr('data-score');
-		},
-		path: '/assets/'
-	});
-</script>
+
 </body>
 </html>
 
+<div id="review-modal" class="modal fade"></div>
 
-<script>
-	$('.average-review-rating').raty({
-		readOnly: true,
-		path: '/assets/',
-		score: function() {
-			return $(this).attr('data-score')
-		}
-	});
-</script>
+

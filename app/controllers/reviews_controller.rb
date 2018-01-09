@@ -18,9 +18,6 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
 
-    if @review.save
-      redirect_to root_path
-    end
   end
 
   # GET /reviews/1/edit
@@ -32,13 +29,17 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
+    
     respond_to do |format|
       if @review.save
         format.html { redirect_to @review, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
+        format.js
+
       else
         format.html { render :new }
         format.json { render json: @review.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -48,11 +49,13 @@ class ReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
-        format.json { render :show, status: :ok, location: @review }
+        # format.html { redirect_to @review, notice: 'Review was successfully updated.' }
+        # format.json { render :show, status: :ok, location: @review }
+        format.js
       else
-        format.html { render :edit }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
+        format.js
+        # format.html { render :edit }
+        # format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,6 +67,7 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 

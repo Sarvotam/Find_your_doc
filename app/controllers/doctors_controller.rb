@@ -4,7 +4,7 @@ class DoctorsController < ApplicationController
   before_action :authenticate_user!
   before_action :doctor, only: [:new, :create]
   before_action :doctor_authentication, except: [:show, :index]
-    before_action :specific_user, only: [ :edit, :update, :destroy ]
+  before_action :specific_user, only: [ :edit, :update, :destroy ]
 
 
   # GET /doctors
@@ -16,14 +16,13 @@ class DoctorsController < ApplicationController
   # GET /doctors/1
   # GET /doctors/1.json
   def show
-
     @review = Review.new
     @reviews = @doctor.reviews
     @qualification = @doctor.qualification  
         if @doctor.reviews.blank?
-              @average_review = 0
-              else
-                @average_review = (@doctor.reviews.average(:wait_time_rating) + @doctor.reviews.average(:bedside_manner_rating) + @doctor.reviews.average(:overall_rating))/3           
+          @average_review = 0
+        else
+           @average_review = (@doctor.reviews.average(:wait_time_rating) + @doctor.reviews.average(:bedside_manner_rating) + @doctor.reviews.average(:overall_rating))/3           
         end   
   end
 
@@ -84,7 +83,7 @@ class DoctorsController < ApplicationController
    def specific_user
      if session[:doctor_id] != @doctor.id
       flash[:notice] = "You are not the right user"
-      redirect_to doctor_path(session[:doctor_id]) 
+      redirect_to doctor_path(@doctor) 
     end
   end
 
