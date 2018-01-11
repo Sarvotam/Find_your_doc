@@ -34,9 +34,9 @@
 	<% if current_user.user_type == "patient" %>
 	 <% #if (Review.where("doctor_id = ? AND user_id = ?", params[:id], current_user.id)).empty? %>	 
 
- 
+
   <%= link_to "Add Review", new_review_path(doctor_id: @doctor.id),
-				remote: true, class: 'btn sign-up' %>
+				remote: true,  class: 'btn sign-up' %>
 
 
 <%#end %>

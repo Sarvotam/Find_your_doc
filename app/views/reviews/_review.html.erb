@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="review-<%= review.id%>">
           <div class="col-md-1"></div>
           <div class="col-md-2">
             Date of comment<br>
@@ -20,7 +20,31 @@
             <%= review.review %>
           </div>
            <%= link_to 'Show', review %>
-            <%= link_to 'Edit', edit_review_path(review) %>
-<%= link_to 'Destroy', review,remote: true, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Edit', edit_review_path(review), remote:true %>
+<%= link_to 'Destroy', review, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
+<script type="text/javascript">
+           $('.review-rating').raty({ 
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+
+          $('#rating-form1',).raty({
+            path: '/assets/',
+            score: '<%=@review.wait_time_rating%>'
+          });
        
+         
+          $('#rating-form2').raty({
+            path: '/assets/',
+            score: '<%= @review.bedside_manner_rating%>'
+          });
+       
+          $('#rating-form3').raty({
+            path: '/assets/',
+            score: '<%= @review.overall_rating%>'
+          });
+       </script>
