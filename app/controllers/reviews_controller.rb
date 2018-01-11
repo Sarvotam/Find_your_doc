@@ -29,7 +29,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    @review.save!
+    @review.save
   end
 
   # PATCH/PUT /reviews/1
