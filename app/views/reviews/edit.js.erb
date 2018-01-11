@@ -1,33 +1,5 @@
 $("#review-modal").html("<%= escape_javascript(render 'edit') %>");
 $("#review-modal").modal("show");
  
-          $('.review-rating').raty({ 
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/'
-  });
-
-          $('#rating-form1',).raty({
-            path: '/assets/',
-              scoreName: 'review[wait_time_rating]',
-            score: '<%=@review.wait_time_rating%>'
-          });
-       
-         
-          $('#rating-form2').raty({
-            path: '/assets/',
-            scoreName: 'review[bedside_manner_rating]',
-            score: '<%= @review.bedside_manner_rating%>'
-          });
-       
-          $('#rating-form3').raty({
-            path: '/assets/',
-            scoreName: 'review[overall_rating]',
-            score: '<%= @review.overall_rating%>'
-          });
-       
-
-  
+    
  
