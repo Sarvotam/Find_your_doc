@@ -4,8 +4,24 @@ $("ul.errors").html("")
 		$("ul.errors").append($("<li />").html("<%= msg.html_safe %>"))
 	<% end %>
 <% else %>
-	$('#review-modal').modal('hide')
+	$('#review-modal').modal('hide') 
 	$(".doctor_review" ).append( "<%=j render @review %>")
+	$(".notice").html("<%=j flash[:notice] %>")
+	<% flash.clear%>
+	  // scroll to added comment
+	  $('#review-<%= @review.id%>').addClass('new-review')
+	  $('html,body').animate({
+        scrollTop: $("#review-<%= @review.id%>").offset().top},
+        'slow');
+	  // hides notice after few secoonf
+		setTimeout(function(){
+ 	 	$('.notice').slideUp(500);
+ 	 	$('#review-<%= @review.id%>').removeClass('new-review')
+	}, 5000);
+
+	
+    	
+	
 <% end %>
 
 

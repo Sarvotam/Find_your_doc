@@ -29,20 +29,37 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    @review.save!
+    doctor_id = review_params[:doctor_id]
+     if @review.save 
+      doctor_id = Doctor.find(review_params[:doctor_id])
+      @average_review = (doctor_id.reviews.average(:wait_time_rating) + doctor_id.reviews.average(:bedside_manner_rating) + doctor_id.reviews.average(:overall_rating))/3           
+
+      flash[:notice] = "successfully created"
+    else
+      flash[:notice] = "failed"
+    end
+    
   end
 
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
-    @review.update(review_params)
+    if @review.update(review_params)
+      flash[:notice] = "Review Updated"
+    else
+      flash[:notice] = "Review failed to update"
+    end
        
   end
 
   # DELETE /reviews/1
   # DELETE /reviews/1.json
   def destroy
-    @review.destroy
+    if@review.destroy
+      flash[:notice] = "Review successfully deleted"
+    else
+      flash[:notice] = "Review failed to delete"
+    end
   end
 
   private

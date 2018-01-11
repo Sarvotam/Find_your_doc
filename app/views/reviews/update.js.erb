@@ -4,6 +4,11 @@ $("ul.errors").html("")
 		$("ul.errors").append($("<li />").html("<%= msg.html_safe %>"))
 	<% end %>
 <% else %>
+	$(".notice").html("<%=j flash[:notice] %>")
+	<% flash.clear%>
+	setTimeout(function(){
+ 	 	$('.notice').slideUp(500);
+	}, 5000);
 	$("#review-<%=@review.id%>").replaceWith( "<%=j render @review %>")
 	$("#review-modal").modal("hide")
 <% end %>
