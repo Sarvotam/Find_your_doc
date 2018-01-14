@@ -1,7 +1,14 @@
+$("ul.errors").html("")
+<% if @review.errors.any? %>
+	<% @review.errors.full_messages.each do |msg| %>
+  	$("ul.errors").append($("<li/>").html("<%= msg.html_safe %>"))
+ 	<%end%>
+  <% else %>
+   $('.notice').html('<%=j flash[:notice]%>')
+$("#review-<%=@review.id%>").replaceWith( "<%=j render @review %>")
 
-$("#review-<%=@review.id%>").replaceWith( "<%=j render @review %>");
-
-$("#review-modal").modal("hide");
+$("#review-modal").modal("hide")
+<%end%>
 
      
  

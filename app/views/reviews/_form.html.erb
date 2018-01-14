@@ -1,5 +1,5 @@
 <%= form_for review, remote: true  do |f| %>
-
+<ul class="errors"></ul>
 <div class="field">
     
     <%= f.hidden_field :doctor_id%>
@@ -34,6 +34,8 @@
         <%= f.submit %>
       </div>
 <% end %>
+
+
           <script type="text/javascript">
           $('#rating-form1',).raty({
             path: '/assets/',

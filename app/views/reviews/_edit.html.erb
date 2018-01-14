@@ -11,3 +11,27 @@
 
 <%= link_to 'Show', @review %> |
 <%= link_to 'Back', reviews_path %>
+
+
+<script type="text/javascript">
+          $('#rating-form1',).raty({
+            path: '/assets/',
+              scoreName: 'review[wait_time_rating]',
+            score: '<%=@review.wait_time_rating%>'
+          });
+       
+         
+          $('#rating-form2').raty({
+            path: '/assets/',
+            scoreName: 'review[bedside_manner_rating]',
+            score: '<%= @review.bedside_manner_rating%>'
+          });
+       
+          $('#rating-form3').raty({
+            path: '/assets/',
+            scoreName: 'review[overall_rating]',
+            score: '<%= @review.overall_rating%>'
+          });
+       
+
+  </script>

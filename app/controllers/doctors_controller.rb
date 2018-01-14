@@ -16,6 +16,7 @@ class DoctorsController < ApplicationController
   # GET /doctors/1
   # GET /doctors/1.json
   def show
+    @appointment = Appointment.new
     @review = Review.new
     @reviews = @doctor.reviews
     @qualification = @doctor.qualification  

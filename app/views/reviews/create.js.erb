@@ -1,16 +1,14 @@
-$('#review-modal').modal('hide');
-$( ".doctor_review" ).append( "<%=j render @review %>");
+$("ul.errors").html("")
+<% if @review.errors.any? %>
+	<% @review.errors.full_messages.each do |msg| %>
+  	$("ul.errors").append($("<li/>").html("<%= msg.html_safe %>"))
+ 	<%end%>
+  <% else %>
+  $('.notice').html('<%=j flash[:notice]%>')/*flash notice for error message --- called from review controller*/
+  <% flash.clear %>
+	$('#review-modal').modal('hide')
+	$(".doctor_review" ).append( "<%=j render @review %>")
+<% end %>
 
 
-
-
-  $('.review-rating').raty({ 
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/'
-  });
-
-  
  
