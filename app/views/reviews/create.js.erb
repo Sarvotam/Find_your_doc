@@ -1,12 +1,13 @@
 $("ul.errors").html("")
 <% if @review.errors.any? %>
 	<% @review.errors.full_messages.each do |msg| %>
+
 		$("ul.errors").append($("<li />").html("<%= msg.html_safe %>"))
 	<% end %>
 <% else %>
 	$('#review-modal').modal('hide') 
 	$(".doctor_review" ).append( "<%=j render @review %>")
-	$(".notice").html("<%=j flash[:notice] %>")
+	$(".notice").html("<%=j flash[:notice] %>")/*flash notice for error message --- called from review controller*/
 	<% flash.clear%>
 	  // scroll to added comment
 	  $('#review-<%= @review.id%>').addClass('new-review')
@@ -25,6 +26,4 @@ $("ul.errors").html("")
 <% end %>
 
 
- 
-  
  

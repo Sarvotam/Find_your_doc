@@ -1,0 +1,23 @@
+<%= form_for(appointment) do |f| %>
+  <% if appointment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+      <ul>
+      <% appointment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+  <%= f.hidden_field :doctor_id, value: params[:doctor_id] %>
+    <%= f.label :start_time %><%= f.text_field :start_time, autofocus: true %>
+    <%= f.label :end_time %> <%= f.text_field :end_time %>
+    <%= f.label :appointment_status %><%= f.text_area :appointment_status %>
+    <%= f.label :cancellation_reason %><%= f.text_area :cancellation_reason %>
+    <%= f.label :health_history %><%= f.text_area :health_history %>
+    <%= f.submit %>
+  </div>
+<% end %>

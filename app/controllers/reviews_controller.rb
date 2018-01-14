@@ -27,7 +27,9 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(review_params)
+    if @review = Review.new(review_params)
+       flash[:notice] = "New Review for doctor successfully created"
+    end
     @review.user_id = current_user.id
     doctor_id = review_params[:doctor_id]
      if @review.save 

@@ -1,6 +1,5 @@
 <%= form_for(review, remote: true )do |f| %>
   <ul class="errors"></ul>
-      
 <div class="field">
     
     <%= f.hidden_field :doctor_id%>
@@ -10,9 +9,6 @@
   <div id="rating-form1" class="review-rating">
     <label>Wait time rating</label>
   </div>
-
-
- 
   <div id="rating-form2" class="review-rating">
     <label>bedside manner rating</label>
   </div>
@@ -21,36 +17,39 @@
     <label>overall rating</label>
   </div>
 
-  <div class="field">
-    <%= f.label :review %>
-    <%= f.text_area :review %>
-  </div>
+      <div class="field">
+        <%= f.label :review %>
+        <%= f.text_area :review %>
+      </div>
 
-  <div class="field">
-    <%= f.label :is_recommended %>
-    <%= f.check_box :is_recommended %>
-  </div>
+      <div class="field">
+        <%= f.label :is_recommended %>
+        <%= f.check_box :is_recommended %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
 <% end %>
- <script type="text/javascript">
+
+
+          <script type="text/javascript">
           $('#rating-form1',).raty({
             path: '/assets/',
             scoreName: 'review[wait_time_rating]'
           });
         </script>
+
          <script type="text/javascript">
           $('#rating-form2').raty({
             path: '/assets/',
             scoreName: 'review[bedside_manner_rating]'
           });
         </script>
- <script type="text/javascript">
+
+        <script type="text/javascript">
           $('#rating-form3').raty({
             path: '/assets/',
             scoreName: 'review[overall_rating]'
           });
         </script>
-       

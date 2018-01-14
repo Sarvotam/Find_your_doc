@@ -16,6 +16,7 @@ class DoctorsController < ApplicationController
   # GET /doctors/1
   # GET /doctors/1.json
   def show
+    @appointment = Appointment.new
     @review = Review.new
     @reviews = @doctor.reviews
     @qualification = @doctor.qualification  
@@ -83,7 +84,7 @@ class DoctorsController < ApplicationController
    def specific_user
      if session[:doctor_id] != @doctor.id
       flash[:notice] = "You are not the right user"
-      redirect_to doctor_path(session[:doctor_id]) 
+      redirect_to doctor_path(@doctor) 
     end
   end
 
