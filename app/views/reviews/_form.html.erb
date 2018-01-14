@@ -1,5 +1,5 @@
-<%= form_for review, remote: true  do |f| %>
-<ul class="errors"></ul>
+<%= form_for(review, remote: true )do |f| %>
+  <ul class="errors"></ul>
 <div class="field">
     
     <%= f.hidden_field :doctor_id%>
@@ -9,9 +9,6 @@
   <div id="rating-form1" class="review-rating">
     <label>Wait time rating</label>
   </div>
-
-
- 
   <div id="rating-form2" class="review-rating">
     <label>bedside manner rating</label>
   </div>

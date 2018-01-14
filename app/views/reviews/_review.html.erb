@@ -23,14 +23,13 @@
             <%= link_to 'Edit', edit_review_path(review), remote:true %>
 <%= link_to 'Destroy', review, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
-       
-        <script type="text/javascript">
-                   $('.review-rating').raty({ 
-            readOnly: true,
-            score: function() {
-              return $(this).attr('data-score');
-            },
-            path: '/assets/'
-          });
+<script type="text/javascript">
+           $('.review-rating').raty({ 
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
 
-     </script>
+       </script>

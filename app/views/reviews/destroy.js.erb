@@ -1,1 +1,6 @@
 $("#review-<%= @review.id %>").slideUp(500);
+$(".notice").html("<%=j flash[:notice] %>")
+<% flash.clear%>
+setTimeout(function(){
+ 	 	$('.notice').slideUp(500);
+	}, 5000);
