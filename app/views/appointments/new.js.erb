@@ -1,0 +1,15 @@
+function testAnim(x) {
+    $('.modal .modal-dialog').attr('class', 'modal-dialog  ' + x + '  animated');
+};
+$('#myModal').on('show.bs.modal', function (e) {
+  var anim = 'zoomIn'
+      testAnim(anim);
+})
+$('#myModal').on('hide.bs.modal', function (e) {
+  var anim = 'zoomOut'
+      testAnim(anim);
+})
+
+
+$("#myModal").html("<%= escape_javascript(render 'new') %>")
+$("#myModal").modal("show")

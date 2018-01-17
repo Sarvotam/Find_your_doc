@@ -1,2 +1,80 @@
-<h1>StaticPages#home</h1>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+         
+<div id="home">
+  <div class="wrapper">
+    <div class="holder">
+      <div class="container">
+        <div class="row text-center">
+            <div class="actions">
+            <h1>Feeling meh? Find a doctor.</h1>
 <p>Find me in app/views/static_pages/home.html.erb</p>
+            </div>
+        </div>
+    <div class="row">    
+        <div class="col-xs-8 col-xs-offset-2">
+		    <div class="input-group">
+                <div class="input-group-btn search-panel">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    	<span id="search_concept">Filter by</span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#contains">Contains</a></li>
+                      <li><a href="#its_equal">It's equal</a></li>
+                      <li><a href="#greather_than">Greather than ></a></li>
+                      <li><a href="#less_than">Less than < </a></li>
+                      <li class="divider"></li>
+                      <li><a href="#all">Anything</a></li>
+                    </ul>
+                </div>
+                <input type="hidden" name="search_param" value="all" id="search_param">         
+                <input type="text" class="form-control" name="x" placeholder="Search term...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>
+        </div>
+	</div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+ <script type="text/javascript">
+ 	$(document).ready(function(e){
+    $('.search-panel .dropdown-menu').find('a').click(function(e) {
+		e.preventDefault();
+		var param = $(this).attr("href").replace("#","");
+		var concept = $(this).text();
+		$('.search-panel span#search_concept').text(concept);
+		$('.input-group #search_param').val(param);
+	});
+});
+ </script>
+
+<style type="text/css">
+		.glyphicon-search {height: 40px;}
+		.input-group { margin-top: 55px; }
+		.form-control { height: 54px; width: 500px;}
+
+
+	#home { background:url('/assets/element.jpg'); background-size:cover; position: relative; z-index: 1;  }
+	  #home:before{ content:""; position:absolute; left:0; top:0; width:100%; height:100%; z-index: -1; background: rgba(51, 51, 51, 0.7); }
+
+	.wrapper { width: 100%; height: 100vh; margin: 0px;  }
+
+
+  .wrapper { display: table; width: 100%; height: 100vh; margin: 0px; }
+  .holder { display: table-cell; vertical-align: middle; padding: 15px 0px; }
+  .margin {margin-bottom: 20px; font-size: 20px; color: #ffffff; line-height: 40px;}
+  .statement_pannel {    height: 100px; width: 425px;border-radius: 5px;}
+  .actions {color: #ffffff;}
+</style>
+</body>
+</html>

@@ -28,14 +28,13 @@
 			 	 <div id="doctor-name " class="col-md-6">
 		 			<h2 style="font-weight: bolder;"><%= "Dr." + @doctor.user.first_name + " " + @doctor.user.Last_name%></h2>
 		 			<h5>Dentist</h5> 
-		 			<button class="btn"><%= link_to "BOOK Appointment", new_appointment_path(doctor_id: @doctor.id)  %></button>
+		 			
 
 
 	<% if current_user.user_type == "patient" %>
 	 <% #if (Review.where("doctor_id = ? AND user_id = ?", params[:id], current_user.id)).empty? %>	 
-
-
-  <%= link_to "Add Review", new_review_path(doctor_id: @doctor.id),
+	<%= link_to "BOOK Appointment", new_appointment_path(doctor_id: @doctor.id), remote: true,  class: 'btn'%>   
+	<%= link_to "Add Review", new_review_path(doctor_id: @doctor.id),
 				remote: true,  class: 'btn sign-up' %>
 
 
@@ -161,7 +160,6 @@
 <% end %>
 
 	<!-- review given by the users -->
-	<h1>Reviews</h1>
 <div id="review">
 	<div class="user-rating">
 		<div class="container doctor_review">
@@ -205,3 +203,4 @@
 <div id="review-modal" class="modal fade"></div>
 
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
