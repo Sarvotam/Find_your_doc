@@ -25,6 +25,7 @@ root to: "static_pages#home"
    resources :profiles
    resources :time_schedules
    resources :appointments
+   resources :doctor_specializations
 	
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

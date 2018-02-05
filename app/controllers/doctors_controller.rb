@@ -29,7 +29,8 @@ class DoctorsController < ApplicationController
 
   # GET /doctors/new
   def new
-    @doctor = Doctor.new   
+    @doctor = Doctor.new 
+    @doctor_specializations = DoctorSpecialization.all  
   end
 
   # GET /doctors/1/edit

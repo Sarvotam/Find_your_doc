@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128091237) do
+ActiveRecord::Schema.define(version: 20180201104128) do
 
   create_table "appointments", force: :cascade do |t|
     t.datetime "start_time"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 20171128091237) do
     t.string   "profile_image_content_type"
     t.integer  "profile_image_file_size"
     t.datetime "profile_image_updated_at"
+    t.integer  "doctor_specializations_id"
+    t.index ["doctor_specializations_id"], name: "index_doctors_on_doctor_specializations_id"
     t.index ["user_id"], name: "index_doctors_on_user_id"
     t.index [nil], name: "index_doctors_on_user"
   end
